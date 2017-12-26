@@ -1,9 +1,8 @@
 # Quizzler
 Learn to make iOS Apps with [The App Brewery](https://www.appbrewery.co) 📱 | Project Stub | (Swift 4.0/Xcode 9) - Quizzler App
 
-Beginner: Download the starter project files as .zip and extract the files to your desktop.
+I am following London App Brewery tutorials to learn iOS development and this app allows you to create popular quiz game on App Store.
 
-Pro: Git clone to your Xcode projects folder.
 
 ## Finished App
 ![Finished App](https://github.com/londonappbrewery/Images/blob/master/Quizzler.gif)
