@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     //Place your instance variables here
+    let allQuestions = QuestionBank()
+    var pickedAnswer : Bool = false
+    var questionNumber : Int = 0
     
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -21,11 +24,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        questionLabel.text = allQuestions.list[questionNumber].questionText
     }
 
 
     @IBAction func answerPressed(_ sender: AnyObject) {
-  
+        if sender.tag == 1 {
+            pickedAnswer = true
+        }
+        else if sender.tag == 2 {
+            pickedAnswer = false
+        }
+        checkAnswer()
+        questionNumber += 1
+        nextQuestion()
     }
     
     
@@ -35,12 +47,26 @@ class ViewController: UIViewController {
     
 
     func nextQuestion() {
-        
+        if questionNumber < allQuestions.list.count{
+            questionLabel.text = allQuestions.list[questionNumber].questionText
+        }
+        else{
+            let alert = UIAlertController(title: "Awesome", message: "You finished all the questions. Do you want to start over?", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart", style: .default, handler: { (UIAlertAction) in
+                self.startOver()
+            })
+        }
     }
     
     
     func checkAnswer() {
-        
+        let firstAnswer = allQuestions.list[questionNumber].answer
+        if firstAnswer == pickedAnswer{
+            print("You got it")
+        }
+        else {
+            print("No No No")
+        }
     }
     
     
