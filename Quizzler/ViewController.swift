@@ -24,7 +24,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        questionLabel.text = allQuestions.list[questionNumber].questionText
+        nextQuestion()
+        updateUI()
     }
 
 
@@ -42,7 +43,7 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-      
+      progressLabel.text = "\(questionNumber)/13"
     }
     
 
@@ -55,6 +56,8 @@ class ViewController: UIViewController {
             let restartAction = UIAlertAction(title: "Restart", style: .default, handler: { (UIAlertAction) in
                 self.startOver()
             })
+            alert.addAction(restartAction)
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -71,7 +74,8 @@ class ViewController: UIViewController {
     
     
     func startOver() {
-       
+        questionNumber = 0
+        nextQuestion()
     }
     
 
